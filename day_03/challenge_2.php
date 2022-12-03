@@ -5,9 +5,7 @@
     
     /**
      * For items in Sack-1 
-     *  Is this item also in Sack-2
-     *   If so, is this item in Sack-3 
-     *    If so, this is the badge, quit
+     * IF items exists in Sack2 AND Sack3 THEN this is the badge
      */
     function search_badge($s1, $s2, $s3) {
         for ($i = 0; $i < strlen($s1); $i++) {
