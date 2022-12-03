@@ -1,6 +1,6 @@
 <?php 
 
-    $datafile = "challenge_1_data.txt";
+    $datafile = "challenge_data.txt";
     require('_read_datafile.php');
 
     $score = 0;
