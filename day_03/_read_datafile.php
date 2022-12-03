@@ -10,3 +10,4 @@
         $sacks[$no][1] = substr($line, 0, strlen($line)/2);
         $sacks[$no][2] = substr($line, strlen($line)/2);
     }
+    fclose($fh);
