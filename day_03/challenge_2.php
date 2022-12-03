@@ -10,8 +10,8 @@
      *    If so, this is the badge, quit
      */
     function search_badge($s1, $s2, $s3) {
-        for ($x1 = 0; $x1 < strlen($s1); $x1++) {
-            $badge = substr($s1, $x1, 1);
+        for ($i = 0; $i < strlen($s1); $i++) {
+            $badge = substr($s1, $i, 1);
             if (strpos($s2, $badge) !== false && strpos($s3, $badge) !== false)
                 return $badge;
         }
