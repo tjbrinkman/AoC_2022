@@ -5,12 +5,12 @@
 
     function do_action($num, $from, $to) {
         global $towers;
-        $blocks = [];
+        $blocks = []; 
         // pick $num blocks and pop them from $from
-        for ($x=0; $x<$num; $x++)
-            $blocks[] = array_pop($towers[$from-1]);
-        // merge
-        $towers[$to-1] = array_merge($towers[$to-1], array_reverse($blocks));
+        for ($x = 0; $x < $num; $x++)
+            $blocks[] = array_pop($towers[$from - 1]); // blocks become reversed
+        // merge the tower with the (reversed) stack-of-blocks
+        $towers[$to - 1] = array_merge($towers[$to - 1], array_reverse($blocks));
     }   
 
     // run all actions 

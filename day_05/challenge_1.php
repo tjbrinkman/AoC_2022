@@ -3,9 +3,14 @@
     $datafile = 'challenge_data';
     require('_read_datafile.php');
 
-    foreach ($actions as $action)                                           // format: CRATES FROM TO
-        for($x = 0; $x < $action[0]; $x++)                                  // move x number of blocks
-            $towers[$action[2]-1][] = array_pop($towers[$action[1]-1]);     // towerTo[] = array_pop(towerFrom)
+    function do_action ($num, $from, $to) {
+        global $towers;
+        for ($x = 0; $x < $num; $x++) // for $num blocks
+            $towers[$to - 1][] = array_pop($towers[$from - 1]); // pop from $from to $to
+    }
+
+    foreach ($actions as $action) // format: CRATES FROM TO
+        do_action($action[0], $action[1], $action[2]);  
 
     // Display results
     echo "Solution = ";
