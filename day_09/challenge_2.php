@@ -1,5 +1,6 @@
 <?php 
 
+    $tStart = microtime(true);
     /**
      * This solution can also solve challenge-1 
      * To solve challenge-1 with this solution: change 
@@ -55,3 +56,4 @@
     foreach ($steps as $step) move($step[0], $step[1]);
     
     echo "Number of (unique) locations visited by tail: ".count(array_unique($log))." \n";
+    echo "Execution time: ".round(microtime(true) - $tStart, 3)." ms \n";
