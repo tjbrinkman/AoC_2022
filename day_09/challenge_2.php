@@ -31,10 +31,10 @@
                 // distance to leading knot
                 $distanceMax = max(abs($rope[$knot - 1]->x - $rope[$knot]->x), abs($rope[$knot - 1]->y - $rope[$knot]->y));
                 if ($distanceMax > 1) { // follow the leader
-                    if ($rope[$knot-1]->x > $rope[$knot]->x) $rope[$knot]->x++;
-                    if ($rope[$knot-1]->x < $rope[$knot]->x) $rope[$knot]->x--;
-                    if ($rope[$knot-1]->y > $rope[$knot]->y) $rope[$knot]->y++;
-                    if ($rope[$knot-1]->y < $rope[$knot]->y) $rope[$knot]->y--;
+                    if ($rope[$knot-1]->x > $rope[$knot]->x) $rope[$knot]->x++; // move right
+                    if ($rope[$knot-1]->x < $rope[$knot]->x) $rope[$knot]->x--; // move left
+                    if ($rope[$knot-1]->y > $rope[$knot]->y) $rope[$knot]->y++; // move up
+                    if ($rope[$knot-1]->y < $rope[$knot]->y) $rope[$knot]->y--; // move down
                 }
             }
             // log tail knot
