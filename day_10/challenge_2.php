@@ -1,4 +1,5 @@
 <?php 
+    $tStart = microtime(true);
 
     // Solves both 1 and 2
 
@@ -40,8 +41,10 @@
         }
     }
 
+
     $cpu = new Cpu();
     foreach($instructions as $instruction) 
         $cpu->execute($instruction);
     
     echo "Sum of signal-stregth: $cpu->sumStrength \n";
+    echo "Total execution time: ".round((microtime(true) - $tStart) * 1000, 3)." ms\n";
