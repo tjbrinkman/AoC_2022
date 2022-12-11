@@ -1,4 +1,5 @@
 <?php
+    $tStart = microtime(true);
 
     $datafile = 'data.txt';
     $data = file($datafile);
@@ -71,4 +72,5 @@
     }
 
     arsort($activeMonkey);
-    echo "Monkey Business: ".(array_shift($activeMonkey) * array_shift($activeMonkey))." \n";    
+    echo "Monkey Business: ".(array_shift($activeMonkey) * array_shift($activeMonkey))." \n";   
+    echo "Total execution time: ".round((microtime(true) - $tStart) * 1000, 3)." ms\n";
