@@ -3,10 +3,6 @@
     $datafile = 'data.txt';
     require('_read_file.php');
 
-
-
-    $sandCount = 0;
-
     function sandfall($x, $y) {
         global $map, $abyss;
         if ($y >= $abyss) return false; // sand cannot be catched, in the abyss
@@ -17,10 +13,9 @@
         return true; // halted at resting position
     }    
 
+    $sandCount = 0;
     while (sandfall(500,0)) 
         $sandCount++;
 
-
-    print_r($map);
     print "Units of sand before it flows in the abyss: $sandCount \n";
         
