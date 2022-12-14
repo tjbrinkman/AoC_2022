@@ -18,7 +18,7 @@
     while (sandfall(500,0)) 
         $sandCount++;
 
-    print "Units of sand before it flows in the abyss: $sandCount \n";
+    print "Units of sand before the nozzle is stuck: $sandCount \n";
         
 
     
