@@ -3,44 +3,39 @@
     $datafile = 'demo.txt';
 
     $map = [];
-    $mapStart = $mapExit = [];
     $fh = fopen($datafile, 'r');
-    $y = 0;
-    while ($line = trim(fgets($fh))) {
-        $map[$y] = str_split($line);
-        for ($x = 0; $x < count($map[$y]); $x++) {
-            switch ($map[$y][$x]) {
-                case 'S' : // Start
-                    $mapStart[0] = $y;
-                    $mapStart[1] = $x;
-                    break;
-                case 'E' : // Exit
-                    $mapExit[0] = $y;
-                    $mapExit[1] = $x;
-                    break;
-                default : // height
-                    break;
-            }
-        }
-        $y++;
-    }
+    while ($line = trim(fgets($fh))) $map[] = str_split($line);
     fclose($fh);
 
-
-    function route($x, $y) {
-        global $map;
-
-        if ($map[$y][$x] == 'E') return 0; // found the exit
-        if ($map[$y][$x] == 'X') return false; // visited this point
-
-        $height = ord($map[$y][$x]);
-        
-        if ($y > 0 && $map[$y-1][$x] <= $height+1) {
-            echo "U";
+    // Find start / exit positions
+    $pStart = $pExit = [];
+    for ($y = 0; $y < count($map); $y++) {
+        for ($x = 0; $x < count($map[0]); $x++) {
+            if ($map[$y][$x] == 'S') {
+                $pStart[0] = $y;
+                $pStart[1] = $x;
+            }
+            if ($map[$y][$x] == 'E') {
+                $pExit[0] = $y;
+                $pExit[1] = $x;
+            }
         }
+    } // find Start & Exit
+
+    function h($map, $x, $y) {
+        if ($x < 0 || $y < 0 || $x >= count($map[0]) || $y >= count($map)) return 255; // beyond the tile-border
+        return ($map[$y][$x] == 'S') ? ord('z') : ord($map[$y][$x]);
+    }
+
+    function route($map, $x, $y) {
+        if ($map[$y][$x] == 'E') return 1;          // found exit
+
+        $h = h($map, $x, $y);
+        $map[$y][$x] = chr(255);                    // explored, don't visit again
 
         
 
     }
+    
 
-    $length = route($mapStart[1], $mapStart[0]);
+    $shortestPath = route($map, $pStart[1], $pStart[0]);
