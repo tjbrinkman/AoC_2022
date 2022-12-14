@@ -1,4 +1,5 @@
 <?php 
+    $tStart = microtime(true);
 
     $datafile = 'data.txt';
     require('_read_file.php');
@@ -19,6 +20,7 @@
         $sandCount++;
 
     print "Units of sand before the nozzle is stuck: $sandCount \n";
+    echo "Total execution time: ".round((microtime(true) - $tStart) * 1000, 3)." ms\n";
         
 
     
